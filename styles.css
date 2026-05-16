@@ -84,7 +84,7 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 15%;
 }
 .hero-overlay {
   position: absolute;
@@ -127,43 +127,70 @@ section { padding: 72px 5vw; }
   margin-top: 12px;
 }
 
-/* ─── Services ─── */
+/* ─── Services / Accordion ─── */
 .services { background: var(--white); }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 0;
+.accordion {
   border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  max-width: 760px;
 }
-.service-card {
-  padding: 32px 28px;
+.accordion-item {
   border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
-  transition: background 0.2s;
 }
-.service-card:hover { background: var(--bg); }
-.service-card h3 {
+.accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 22px 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 12px;
-  line-height: 1.3;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
 }
-.service-card p {
-  font-size: 0.875rem;
+.accordion-trigger:hover { color: var(--accent); }
+.accordion-icon {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-left: 16px;
+  line-height: 1;
+}
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.accordion-item.open .accordion-body {
+  grid-template-rows: 1fr;
+}
+.accordion-body > * {
+  overflow: hidden;
+}
+.accordion-body p {
+  font-size: 0.9rem;
   color: var(--text-light);
-  line-height: 1.75;
+  line-height: 1.85;
+  padding-bottom: 22px;
 }
 
 /* ─── Consultations ─── */
-.consultations { background: var(--bg); border-top: 1px solid var(--border); }
+.consultations { background: var(--bg); border-top: 1px solid var(--border); text-align: center; }
+.consultations .section-title::after { margin: 12px auto 0; }
+.consultations > p { text-align: center; }
 .consult-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  justify-content: center;
   gap: 48px 64px;
+  flex-wrap: wrap;
   max-width: 640px;
+  margin: 0 auto;
 }
 .consult-block h3 {
   font-family: var(--font-display);
@@ -234,7 +261,7 @@ section { padding: 72px 5vw; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 15%;
   transition: transform 0.6s ease;
 }
 .about-blurb .image-wrap:hover img { transform: scale(1.03); }
@@ -248,6 +275,8 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 48px;
   border-top: 3px solid var(--accent);
+  justify-items: center;
+  text-align: center;
 }
 footer h4 {
   font-family: var(--font-body);
@@ -276,7 +305,7 @@ footer a:hover { color: rgba(255,255,255,0.9); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 10%;
 }
 .page-hero-overlay {
   position: absolute;
